@@ -5,12 +5,18 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.Window;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.oop.dubanrosero.quickmindproject.Util.Constant;
+import com.oop.dubanrosero.quickmindproject.dao.PreguntasConImagenDao;
+import com.oop.dubanrosero.quickmindproject.models.PreguntaConImagen;
+import com.oop.dubanrosero.quickmindproject.models.PreguntaSinImagen;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class PreguntaJuego extends Activity implements View.OnClickListener {
@@ -24,6 +30,7 @@ public class PreguntaJuego extends Activity implements View.OnClickListener {
     int numeroDeVidas=3;
     ImageView corazonUno,corazonDos,corazonTres,cambioDepregunta,cincuenta,rendirse;
     ImageView imagen;
+    PreguntaConImagen preguntaRandom;
 
     public void doSomething() {
         int x=1;
@@ -51,7 +58,8 @@ public class PreguntaJuego extends Activity implements View.OnClickListener {
         }else {
             iteradorTipoDePregunta=2;
             iteradorDePregunta=genradorDeRandom.nextInt(preguntasDeGeografiaConImagen.size());
-            imagen.setImageResource(preguntasDeGeografiaConImagen.get(iteradorDePregunta).getImagen());
+            //imagen.setImageResource(preguntasDeGeografiaConImagen.get(iteradorDePregunta).getImagen());
+            Picasso.with(this).load(preguntaRandom.getImagen()).into(imagen);
             respuestaUno= (Button) findViewById(R.id.respuestaUno);
             respuestaUno.setText(preguntasDeGeografiaConImagen.get(iteradorDePregunta).getOpciones()[0]);
             respuestaDos= (Button) findViewById(R.id.respuestaDos);
@@ -109,30 +117,36 @@ public class PreguntaJuego extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_pregunta_juego);
+        PreguntasConImagenDao preguntasConImagenDao = new PreguntasConImagenDao(getResources().getBoolean(R.bool.isEnglish));
+        List<PreguntaConImagen> dataPreguntas = preguntasConImagenDao.getPreguntasConImagenDeporte();
+        preguntaRandom = preguntasConImagenDao.getRandomPreguntaConImagen(dataPreguntas);
+
+
+
         //instanciacion de preguntas de geografia sin imagen
         String [] respuestasPregunta1={"rusia","canada","estados unidos ","china"};
-        PreguntaSinImagen pregunta1=new PreguntaSinImagen("cual es el pais mas garnde de el mundo ?","geografia",respuestasPregunta1,"rusia");
+        PreguntaSinImagen pregunta1=new PreguntaSinImagen("cual es el pais mas garnde de el mundo ?", Constant.TYPE_SOCIALES,respuestasPregunta1,"rusia");
         preguntasDeGeografia.add(pregunta1);
         String [] respuestasPregunta2={"6","4","5","3"};
-        PreguntaSinImagen pregunta2=new PreguntaSinImagen("cuantos oceanos hay en el planeta tierra?","geografia",respuestasPregunta2,"5");
+        PreguntaSinImagen pregunta2=new PreguntaSinImagen("cuantos oceanos hay en el planeta tierra?",Constant.TYPE_SOCIALES,respuestasPregunta2,"5");
         preguntasDeGeografia.add(pregunta2);
         String [] respuestasPregunta3={"monterreal","ottawa","toronto","ninguna de las anteriores"};
-        PreguntaSinImagen pregunta3=new PreguntaSinImagen("cual es la capital de canada ?","geografia",respuestasPregunta3,"ottawa");
+        PreguntaSinImagen pregunta3=new PreguntaSinImagen("cual es la capital de canada ?",Constant.TYPE_SOCIALES,respuestasPregunta3,"ottawa");
         preguntasDeGeografia.add(pregunta3);
 
-        //instanciacion de preguntas de geografia con imagen
+        //instanciacion de Constant.TYPE_SOCIALEScon imagen
         String [] respuestasPregunta4={"Florencia","Roma","Viena","Matera"};
-        PreguntaConImagen pregunta4=new PreguntaConImagen(R.drawable.el_coliseo_romano,"geografia",respuestasPregunta4,"Roma");
+        PreguntaConImagen pregunta4=new PreguntaConImagen("http://www.mundoprimaria.com/wp-content/uploads/2014/06/El-Coliseo-foto-1-e1445523238544.jpg",Constant.TYPE_SOCIALES,respuestasPregunta4,"Roma");
         preguntasDeGeografiaConImagen.add(pregunta4);
         String [] respuestasPregunta5={"francia","italia","gracia","alemania"};
-        PreguntaConImagen pregunta5=new PreguntaConImagen(R.drawable.torre_eifel,"geografia",respuestasPregunta5,"francia");
+        PreguntaConImagen pregunta5=new PreguntaConImagen("http://www.mundoprimaria.com/wp-content/uploads/2014/06/El-Coliseo-foto-1-e1445523238544.jpg",Constant.TYPE_SOCIALES,respuestasPregunta5,"francia");
         preguntasDeGeografiaConImagen.add(pregunta5);
         String [] respuestasPregunta6={"inglaterra","francia","rusia","holanda"};
-        PreguntaConImagen pregunta6=new PreguntaConImagen(R.drawable.bandera_de_holanda,"geografia",respuestasPregunta6,"holanda");
+        PreguntaConImagen pregunta6=new PreguntaConImagen("http://www.mundoprimaria.com/wp-content/uploads/2014/06/El-Coliseo-foto-1-e1445523238544.jpg",Constant.TYPE_SOCIALES,respuestasPregunta6,"holanda");
         preguntasDeGeografiaConImagen.add(pregunta6);
 
 
-        //PreguntaSinImagen pregunta81 = new PreguntaSinImagen(String.valueOf(R.string.pregunta81),"geografia",String.valueOf(R.array.respuesta1Pregunta81),
+        //PreguntaSinImagen pregunta81 = new PreguntaSinImagen(String.valueOf(R.string.pregunta81Constant.TYPE_SOCIALES,String.valueOf(R.array.respuesta1Pregunta81),
           //      String.valueOf(R.string.respuestaCorrecta81));
 
         //crecion de pregunta

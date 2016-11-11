@@ -10,6 +10,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.*;
 
+import com.oop.dubanrosero.quickmindproject.models.PreguntaSinImagen;
+
 import java.util.ArrayList;
 
 public class Inicio extends Activity {
