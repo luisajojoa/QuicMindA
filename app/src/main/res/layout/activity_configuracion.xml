@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/fon"
-    tools:context="com.oop.dubanrosero.quickmindproject.Configuracion">
+    tools:context="com.oop.dubanrosero.quickmindproject.Configuracion"
+    android:layout_marginBottom="5dp">
 
     <TextView
         android:layout_width="match_parent"
@@ -34,7 +35,8 @@
 
         <SeekBar
             style="@android:style/Widget.SeekBar"
-            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_height="50dp"
             android:max="10"
             android:progress="3"
             android:id="@+id/seekBar"
@@ -57,14 +59,15 @@
 
         <Button
             android:text="@string/Language"
-            android:layout_width="245dp"
+            android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:id="@+id/botonlanguage"
             android:layout_gravity="center_vertical"
             android:textSize="32sp"
             android:layout_marginLeft="10dp"
             style="@android:style/Widget.DeviceDefault.Button"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            android:background="@color/gray" />
 
     </LinearLayout>
 
@@ -90,7 +93,9 @@
             android:textSize="32sp"
             android:layout_marginLeft="10dp"
             android:layout_width="250dp"
-            style="@android:style/Widget.DeviceDefault.Button" />
+            style="@android:style/Widget.DeviceDefault.Button"
+            android:textColor="@android:color/black"
+            android:background="@color/gray" />
     </LinearLayout>
 
     <LinearLayout
