@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/fon"
-    tools:context="com.oop.dubanrosero.quickmindproject.Configuracion"
-    android:layout_marginBottom="5dp">
+    tools:context="com.oop.dubanrosero.quickmindproject.Configuracion">
 
     <TextView
         android:layout_width="match_parent"
