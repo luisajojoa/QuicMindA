@@ -24,6 +24,9 @@ public class ModoJuego extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_modo_juego);
 
+        Intent intent =  getIntent();
+        Bundle elTema = intent.getExtras();
+        final int tema = (int) elTema.get("TEMA");
         //ASIGNAR VALORES
 
         //TEXTVIEW
@@ -81,6 +84,7 @@ public class ModoJuego extends Activity {
             @Override
             public void onClick(View view) {
                 Intent juegonormal = new Intent(ModoJuego.this,PreguntaJuego.class);
+                juegonormal.putExtra("ELTEMA",tema);
                 startActivity(juegonormal);
             }
         });
@@ -88,15 +92,17 @@ public class ModoJuego extends Activity {
             @Override
             public void onClick(View view) {
                 Intent juegoNormal = new Intent(ModoJuego.this,PreguntaJuego.class);
+                juegoNormal.putExtra("ELTEMA",tema);
                 startActivity(juegoNormal);
             }
         });
 
-        //pantalla siguiente por cambiar
+
         timeTrialMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent juegoreloj = new Intent(ModoJuego.this,Records.class);
+                juegoreloj.putExtra("ELTEMA",tema);
                 startActivity(juegoreloj);
             }
         });
@@ -105,6 +111,7 @@ public class ModoJuego extends Activity {
             @Override
             public void onClick(View view) {
                 Intent juegoReloj = new Intent(ModoJuego.this,Records.class);
+                juegoReloj.putExtra("ELTEMA",tema);
                 startActivity(juegoReloj);
             }
         });

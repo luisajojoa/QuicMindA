@@ -11,6 +11,8 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.oop.dubanrosero.quickmindproject.Util.Constant;
+
 public class tema extends Activity {
 
     Context contexto= this;
@@ -64,6 +66,7 @@ public class tema extends Activity {
             @Override
             public void onClick(View view) {
                 Intent mode = new Intent(tema.this,ModoJuego.class);
+                mode.putExtra("TEMA", Constant.TYPE_CIENCIAS);
                 startActivity(mode);
             }
         });
@@ -73,6 +76,7 @@ public class tema extends Activity {
             @Override
             public void onClick(View view) {
                 Intent socialMode = new Intent(tema.this,ModoJuego.class);
+                socialMode.putExtra("TEMA", Constant.TYPE_SOCIALES);
                 startActivity(socialMode);
             }
         });
@@ -81,6 +85,7 @@ public class tema extends Activity {
             @Override
             public void onClick(View view) {
                 Intent sportMode = new Intent(tema.this,ModoJuego.class);
+                sportMode.putExtra("TEMA", Constant.TYPE_DEPORTE);
                 startActivity(sportMode);
             }
         });
@@ -89,6 +94,7 @@ public class tema extends Activity {
             @Override
             public void onClick(View view) {
                 Intent artMode = new Intent(tema.this,ModoJuego.class);
+                artMode.putExtra("TEMA", Constant.TYPE_ARTES);
                 startActivity(artMode);
             }
         });

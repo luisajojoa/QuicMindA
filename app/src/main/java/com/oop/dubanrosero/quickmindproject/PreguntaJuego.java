@@ -1,16 +1,19 @@
 package com.oop.dubanrosero.quickmindproject;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.oop.dubanrosero.quickmindproject.Util.Constant;
+import com.oop.dubanrosero.quickmindproject.dao.PreguntaConTextoDao;
 import com.oop.dubanrosero.quickmindproject.dao.PreguntasConImagenDao;
+import com.oop.dubanrosero.quickmindproject.models.Pregunta;
 import com.oop.dubanrosero.quickmindproject.models.PreguntaConImagen;
 import com.oop.dubanrosero.quickmindproject.models.PreguntaSinImagen;
 import com.squareup.picasso.Picasso;
@@ -22,52 +25,115 @@ import java.util.Random;
 public class PreguntaJuego extends Activity implements View.OnClickListener {
     TextView pregunta;
     Button respuestaUno,respuestaDos,respuestaTres,respuestaCuatro;
-    ArrayList<PreguntaSinImagen> preguntasDeGeografia=new ArrayList<PreguntaSinImagen>();
-    ArrayList<PreguntaConImagen> preguntasDeGeografiaConImagen=new ArrayList<PreguntaConImagen>();
+    List<PreguntaSinImagen> preguntasDeGeografia=new ArrayList<PreguntaSinImagen>();
+    List<PreguntaConImagen> preguntasDeGeografiaConImagen=new ArrayList<PreguntaConImagen>();
     Random genradorDeRandom=new Random();
-    int iteradorDePregunta,iteradorTipoDePregunta;
-    int iteradorDeNumeroDePreguntas=0;
+    int iteradorDePregunta, aux, randImText;
+    int puntaje=0;
     int numeroDeVidas=3;
     ImageView corazonUno,corazonDos,corazonTres,cambioDepregunta,cincuenta,rendirse;
     ImageView imagen;
-    PreguntaConImagen preguntaRandom;
+    int contador5050=0;
+    int contadorCambioDePregunta=0;
 
-    public void doSomething() {
-        int x=1;
-    }
+    int tema;
+    PreguntaConTextoDao preguntasSinImagenDao;
+    PreguntasConImagenDao preguntasConImagenDao;
+    PreguntaConImagen preguntaImagenRand;
+    PreguntaSinImagen preguntaTextoRand;
 
-    public void crearPregunta() {
-        iteradorDeNumeroDePreguntas++;
-        pregunta= (TextView) findViewById(R.id.textView2);
+
+    public void crearPregunta(int tema) {
+        pregunta = (TextView) findViewById(R.id.textView2);
         imagen= (ImageView) findViewById(R.id.imagen);
         pregunta.setAlpha(0);
-        if(iteradorDeNumeroDePreguntas%3!=0){
-            iteradorTipoDePregunta=1;
-            iteradorDePregunta=genradorDeRandom.nextInt(preguntasDeGeografia.size());
+        randImText = genradorDeRandom.nextInt(9);
+
+        if(randImText %3!=1){
+            //PREGUNTA CON TEXTO
+            aux =1;
             imagen.setImageResource(0);
             pregunta.setAlpha(1);
-            pregunta.setText(preguntasDeGeografia.get(iteradorDePregunta).getPregunta());
+
+            //region Seleccion depregunta aleatoria segun el tema
+            switch (tema){
+                case 0:
+                    preguntaTextoRand = preguntasSinImagenDao.getRandomPreguntaSinImagen(preguntasSinImagenDao.getPreguntasConTextCiencia());
+                    break;
+                case 1:
+                    preguntaTextoRand = preguntasSinImagenDao.getRandomPreguntaSinImagen(preguntasSinImagenDao.getPreguntasConTextSociales());
+                    break;
+                case 2:
+                    preguntaTextoRand = preguntasSinImagenDao.getRandomPreguntaSinImagen(preguntasSinImagenDao.getPreguntasConTextDeporte());
+                    break;
+                case 3:
+                    preguntaTextoRand = preguntasSinImagenDao.getRandomPreguntaSinImagen(preguntasSinImagenDao.getPreguntasConTextArte());
+                default:
+                    break;
+
+            }
+             //endregion
+
+            //region LLEVANDO PREGUNTA AL ACTIVITY
+
+            //pregunta
+            pregunta.setText(preguntaTextoRand.getPregunta());
+
+            //respuestas
             respuestaUno= (Button) findViewById(R.id.respuestaUno);
-            respuestaUno.setText(preguntasDeGeografia.get(iteradorDePregunta).getOpciones()[0]);
+            respuestaUno.setAlpha(1);
+            respuestaUno.setText(preguntaTextoRand.getOpciones()[0]);
             respuestaDos= (Button) findViewById(R.id.respuestaDos);
-            respuestaDos.setText(preguntasDeGeografia.get(iteradorDePregunta).getOpciones()[1]);
+            respuestaDos.setAlpha(1);
+            respuestaDos.setText(preguntaTextoRand.getOpciones()[1]);
             respuestaTres= (Button) findViewById(R.id.respuestaTres);
-            respuestaTres.setText(preguntasDeGeografia.get(iteradorDePregunta).getOpciones()[2]);
+            respuestaTres.setAlpha(1);
+            respuestaTres.setText(preguntaTextoRand.getOpciones()[2]);
             respuestaCuatro= (Button) findViewById(R.id.respuestaCuatro);
-            respuestaCuatro.setText(preguntasDeGeografia.get(iteradorDePregunta).getOpciones()[3]);
+            respuestaCuatro.setAlpha(1);
+            respuestaCuatro.setText(preguntaTextoRand.getOpciones()[3]);
+
+            //endregion
         }else {
-            iteradorTipoDePregunta=2;
-            iteradorDePregunta=genradorDeRandom.nextInt(preguntasDeGeografiaConImagen.size());
-            //imagen.setImageResource(preguntasDeGeografiaConImagen.get(iteradorDePregunta).getImagen());
-            Picasso.with(this).load(preguntaRandom.getImagen()).into(imagen);
+            //PREGUNTA CON IMAGEN
+            aux =2;
+
+            //region Seleccion depregunta aleatoria segun el tema
+            switch (tema){
+                case 0:
+                    preguntaImagenRand = preguntasConImagenDao.getRandomPreguntaConImagen(preguntasConImagenDao.getPreguntasConImagenCiencia());
+                    break;
+                case 1:
+                    preguntaImagenRand = preguntasConImagenDao.getRandomPreguntaConImagen(preguntasConImagenDao.getPreguntasConImagenSociales());
+                    break;
+                case 2:
+                    preguntaImagenRand = preguntasConImagenDao.getRandomPreguntaConImagen(preguntasConImagenDao.getPreguntasConImagenDeporte());
+                    break;
+                case 3:
+                    preguntaImagenRand = preguntasConImagenDao.getRandomPreguntaConImagen(preguntasConImagenDao.getPreguntasConImagenArtes());
+                default:
+                    break;
+
+            }
+            //endregion
+
+            //region LLEVANDO PREGUNTA A ACTIVIDAD
+            //IMAGEN(PREGUNTA)
+            Picasso.with(this).load(preguntaImagenRand.getImagen()).into(imagen);
+            //OPCIONES
             respuestaUno= (Button) findViewById(R.id.respuestaUno);
-            respuestaUno.setText(preguntasDeGeografiaConImagen.get(iteradorDePregunta).getOpciones()[0]);
+            respuestaUno.setAlpha(1);
+            respuestaUno.setText(preguntaImagenRand.getOpciones()[0]);
             respuestaDos= (Button) findViewById(R.id.respuestaDos);
-            respuestaDos.setText(preguntasDeGeografiaConImagen.get(iteradorDePregunta).getOpciones()[1]);
+            respuestaDos.setAlpha(1);
+            respuestaDos.setText(preguntaImagenRand.getOpciones()[1]);
             respuestaTres= (Button) findViewById(R.id.respuestaTres);
-            respuestaTres.setText(preguntasDeGeografiaConImagen.get(iteradorDePregunta).getOpciones()[2]);
+            respuestaTres.setAlpha(1);
+            respuestaTres.setText(preguntaImagenRand.getOpciones()[2]);
             respuestaCuatro= (Button) findViewById(R.id.respuestaCuatro);
-            respuestaCuatro.setText(preguntasDeGeografiaConImagen.get(iteradorDePregunta).getOpciones()[3]);
+            respuestaCuatro.setAlpha(1);
+            respuestaCuatro.setText(preguntaImagenRand.getOpciones()[3]);
+            //endregion
         }
     }
 
@@ -89,12 +155,12 @@ public class PreguntaJuego extends Activity implements View.OnClickListener {
         if (numeroDeVidas==1) {
             corazonUno.setAlpha(0);
             volverATodosBlancos(respuestaUno,respuestaDos,respuestaTres,respuestaCuatro);
-            crearPregunta();
+            crearPregunta(tema);
         }
         if (numeroDeVidas==2) {
             corazonDos.setAlpha(0);
             volverATodosBlancos(respuestaUno,respuestaDos,respuestaTres,respuestaCuatro);
-            crearPregunta();
+            crearPregunta(tema);
         }
     }
 
@@ -117,40 +183,25 @@ public class PreguntaJuego extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_pregunta_juego);
-        PreguntasConImagenDao preguntasConImagenDao = new PreguntasConImagenDao(getResources().getBoolean(R.bool.isEnglish));
-        List<PreguntaConImagen> dataPreguntas = preguntasConImagenDao.getPreguntasConImagenDeporte();
-        preguntaRandom = preguntasConImagenDao.getRandomPreguntaConImagen(dataPreguntas);
+
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        tema = (int) bundle.get("ELTEMA");
+
+        Log.i("hola", String.valueOf(tema));
+
+        preguntasConImagenDao = new PreguntasConImagenDao(getResources().getBoolean(R.bool.isEnglish));
+
+        preguntasSinImagenDao = new PreguntaConTextoDao(getResources().getBoolean(R.bool.isEnglish));
 
 
 
-        //instanciacion de preguntas de geografia sin imagen
-        String [] respuestasPregunta1={"rusia","canada","estados unidos ","china"};
-        PreguntaSinImagen pregunta1=new PreguntaSinImagen("cual es el pais mas garnde de el mundo ?", Constant.TYPE_SOCIALES,respuestasPregunta1,"rusia");
-        preguntasDeGeografia.add(pregunta1);
-        String [] respuestasPregunta2={"6","4","5","3"};
-        PreguntaSinImagen pregunta2=new PreguntaSinImagen("cuantos oceanos hay en el planeta tierra?",Constant.TYPE_SOCIALES,respuestasPregunta2,"5");
-        preguntasDeGeografia.add(pregunta2);
-        String [] respuestasPregunta3={"monterreal","ottawa","toronto","ninguna de las anteriores"};
-        PreguntaSinImagen pregunta3=new PreguntaSinImagen("cual es la capital de canada ?",Constant.TYPE_SOCIALES,respuestasPregunta3,"ottawa");
-        preguntasDeGeografia.add(pregunta3);
-
-        //instanciacion de Constant.TYPE_SOCIALEScon imagen
-        String [] respuestasPregunta4={"Florencia","Roma","Viena","Matera"};
-        PreguntaConImagen pregunta4=new PreguntaConImagen("http://www.mundoprimaria.com/wp-content/uploads/2014/06/El-Coliseo-foto-1-e1445523238544.jpg",Constant.TYPE_SOCIALES,respuestasPregunta4,"Roma");
-        preguntasDeGeografiaConImagen.add(pregunta4);
-        String [] respuestasPregunta5={"francia","italia","gracia","alemania"};
-        PreguntaConImagen pregunta5=new PreguntaConImagen("http://www.mundoprimaria.com/wp-content/uploads/2014/06/El-Coliseo-foto-1-e1445523238544.jpg",Constant.TYPE_SOCIALES,respuestasPregunta5,"francia");
-        preguntasDeGeografiaConImagen.add(pregunta5);
-        String [] respuestasPregunta6={"inglaterra","francia","rusia","holanda"};
-        PreguntaConImagen pregunta6=new PreguntaConImagen("http://www.mundoprimaria.com/wp-content/uploads/2014/06/El-Coliseo-foto-1-e1445523238544.jpg",Constant.TYPE_SOCIALES,respuestasPregunta6,"holanda");
-        preguntasDeGeografiaConImagen.add(pregunta6);
 
 
-        //PreguntaSinImagen pregunta81 = new PreguntaSinImagen(String.valueOf(R.string.pregunta81Constant.TYPE_SOCIALES,String.valueOf(R.array.respuesta1Pregunta81),
-          //      String.valueOf(R.string.respuestaCorrecta81));
+        // preguntaRandom = preguntasConImagenDao.getRandomPreguntaConImagen(dataPreguntasImagenDeporte);
 
         //crecion de pregunta
-        crearPregunta();
+        crearPregunta(tema);
 
         //habilitacion de eventos
         cambioDepregunta= (ImageView) findViewById(R.id.cambioDePregunta);
@@ -159,7 +210,7 @@ public class PreguntaJuego extends Activity implements View.OnClickListener {
         cincuenta.setOnClickListener(this);
         rendirse= (ImageView) findViewById(R.id.rendirse);
         rendirse.setOnClickListener(this);
-        respuestaUno.setOnClickListener(this);
+       respuestaUno.setOnClickListener(this);
         respuestaDos.setOnClickListener(this);
         respuestaTres.setOnClickListener(this);
         respuestaCuatro.setOnClickListener(this);
@@ -173,22 +224,15 @@ public class PreguntaJuego extends Activity implements View.OnClickListener {
         respuestaCuatro= (Button) findViewById(R.id.respuestaCuatro);
         switch (view.getId()){
             case R.id.respuestaUno:
-                if (respuestaUno.getText().equals(preguntasDeGeografia.get(iteradorDePregunta).getRespuestaCorrecta()) && iteradorTipoDePregunta==1){
+                if (respuestaUno.getText().equals(preguntasDeGeografia.get(iteradorDePregunta).getRespuestaCorrecta()) && aux ==1){
                     respuestaUno.setBackgroundColor(getResources().getColor(R.color.verde));
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            doSomething();
-                        }
-                    },10000);
                     volverATodosBlancos(respuestaUno,respuestaDos,respuestaTres,respuestaCuatro);
-                    crearPregunta();
+                    crearPregunta(tema);
                 }else {
-                    if (respuestaUno.getText().equals(preguntasDeGeografiaConImagen.get(iteradorDePregunta).getRespuestaCorrecta()) && iteradorTipoDePregunta==2) {
+                    if (respuestaUno.getText().equals(preguntasDeGeografiaConImagen.get(iteradorDePregunta).getRespuestaCorrecta()) && aux ==2) {
                         respuestaUno.setBackgroundColor(getResources().getColor(R.color.verde));
                         volverATodosBlancos(respuestaUno,respuestaDos,respuestaTres,respuestaCuatro);
-                        crearPregunta();
+                        crearPregunta(tema);
                     }else{
                         respuestaUno.setBackgroundColor(getResources().getColor(R.color.rojo));
                         numeroDeVidas--;
@@ -198,15 +242,15 @@ public class PreguntaJuego extends Activity implements View.OnClickListener {
                 }
                 break;
             case R.id.respuestaDos:
-                if (respuestaDos.getText().equals(preguntasDeGeografia.get(iteradorDePregunta).getRespuestaCorrecta()) && iteradorTipoDePregunta==1){
+                if (respuestaDos.getText().equals(preguntasDeGeografia.get(iteradorDePregunta).getRespuestaCorrecta()) && aux ==1){
                     respuestaDos.setBackgroundColor(getResources().getColor(R.color.verde));
                     volverATodosBlancos(respuestaUno,respuestaDos,respuestaTres,respuestaCuatro);
-                    crearPregunta();
+                    crearPregunta(tema);
                 }else {
-                    if (respuestaDos.getText().equals(preguntasDeGeografiaConImagen.get(iteradorDePregunta).getRespuestaCorrecta()) && iteradorTipoDePregunta==2) {
+                    if (respuestaDos.getText().equals(preguntasDeGeografiaConImagen.get(iteradorDePregunta).getRespuestaCorrecta()) && aux ==2) {
                         respuestaDos.setBackgroundColor(getResources().getColor(R.color.verde));
                         volverATodosBlancos(respuestaUno,respuestaDos,respuestaTres,respuestaCuatro);
-                        crearPregunta();
+                        crearPregunta(tema);
                     }else{
                         respuestaDos.setBackgroundColor(getResources().getColor(R.color.rojo));
                         numeroDeVidas--;
@@ -216,15 +260,15 @@ public class PreguntaJuego extends Activity implements View.OnClickListener {
                 }
                 break;
             case R.id.respuestaTres:
-                if (respuestaTres.getText().equals(preguntasDeGeografia.get(iteradorDePregunta).getRespuestaCorrecta()) && iteradorTipoDePregunta==1){
+                if (respuestaTres.getText().equals(preguntasDeGeografia.get(iteradorDePregunta).getRespuestaCorrecta()) && aux ==1){
                     respuestaTres.setBackgroundColor(getResources().getColor(R.color.verde));
                     volverATodosBlancos(respuestaUno,respuestaDos,respuestaTres,respuestaCuatro);
-                    crearPregunta();
+                    crearPregunta(tema);
                 }else {
-                    if (respuestaTres.getText().equals(preguntasDeGeografiaConImagen.get(iteradorDePregunta).getRespuestaCorrecta()) && iteradorTipoDePregunta==2) {
+                    if (respuestaTres.getText().equals(preguntasDeGeografiaConImagen.get(iteradorDePregunta).getRespuestaCorrecta()) && aux ==2) {
                         respuestaTres.setBackgroundColor(getResources().getColor(R.color.verde));
                         volverATodosBlancos(respuestaUno,respuestaDos,respuestaTres,respuestaCuatro);
-                        crearPregunta();
+                        crearPregunta(tema);
                     }else{
                         respuestaTres.setBackgroundColor(getResources().getColor(R.color.rojo));
                         numeroDeVidas--;
@@ -234,15 +278,15 @@ public class PreguntaJuego extends Activity implements View.OnClickListener {
                 }
                 break;
             case R.id.respuestaCuatro:
-                if (respuestaCuatro.getText().equals(preguntasDeGeografia.get(iteradorDePregunta).getRespuestaCorrecta()) && iteradorTipoDePregunta==1){
+                if (respuestaCuatro.getText().equals(preguntasDeGeografia.get(iteradorDePregunta).getRespuestaCorrecta()) && aux ==1){
                     respuestaCuatro.setBackgroundColor(getResources().getColor(R.color.verde));
                     volverATodosBlancos(respuestaUno,respuestaDos,respuestaTres,respuestaCuatro);
-                    crearPregunta();
+                    crearPregunta(tema);
                 }else {
-                    if (respuestaCuatro.getText().equals(preguntasDeGeografiaConImagen.get(iteradorDePregunta).getRespuestaCorrecta()) && iteradorTipoDePregunta==2) {
+                    if (respuestaCuatro.getText().equals(preguntasDeGeografiaConImagen.get(iteradorDePregunta).getRespuestaCorrecta()) && aux ==2) {
                         respuestaCuatro.setBackgroundColor(getResources().getColor(R.color.verde));
                         volverATodosBlancos(respuestaUno,respuestaDos,respuestaTres,respuestaCuatro);
-                        crearPregunta();
+                        crearPregunta(tema);
                     }else{
                         respuestaCuatro.setBackgroundColor(getResources().getColor(R.color.rojo));
                         numeroDeVidas--;
@@ -252,8 +296,88 @@ public class PreguntaJuego extends Activity implements View.OnClickListener {
                 }
                 break;
             case R.id.cambioDePregunta:
-                crearPregunta();
+                if(contadorCambioDePregunta==0){
+                    contadorCambioDePregunta++;
+                    crearPregunta(tema);
+                    ImageView bCambio= (ImageView) findViewById(R.id.cambioDePregunta);
+                    bCambio.setAlpha((float) 0.5);
+                }else{
+                    Toast toast1 =
+                    Toast.makeText(getApplicationContext(), "Comodin no disponible", Toast.LENGTH_SHORT);toast1.show();
+                }
+
                 break;
+            case R.id.menosDos:
+                if(contador5050==0){
+                    contador5050++;
+                    if(aux==1){
+                        eliminarDos(preguntaTextoRand);
+                    }else{
+                        eliminarDos(preguntaImagenRand);
+                    }
+                    ImageView b5050= (ImageView) findViewById(R.id.menosDos);
+                    b5050.setAlpha((float) 0.5);
+
+                }  else {
+                    Toast toast2 = Toast.makeText(getApplicationContext(), "Comodin no disponible", Toast.LENGTH_SHORT);
+                    toast2.show();
+
+                }
+                break;
+        }
+    }
+    public void eliminarDos(PreguntaSinImagen pregunta){
+        int posicionRespuestaCorrecta=0;
+        int pEliminar1;
+        int pEliminar2;
+        for(int i = 0; i < 4; i++) {
+            if(pregunta.getOpciones()[i].equals(pregunta.getRespuestaCorrecta())){
+                posicionRespuestaCorrecta=i;
+            }
+        }
+        do{
+            pEliminar1 = genradorDeRandom.nextInt(3);
+            pEliminar2 = genradorDeRandom.nextInt(3);
+        }while(pEliminar1==pEliminar2 || pEliminar1==posicionRespuestaCorrecta || pEliminar2==posicionRespuestaCorrecta);
+
+        if(pEliminar1==0 || pEliminar2==0){
+            respuestaUno.setAlpha(0);
+        }
+        if(pEliminar1==1 || pEliminar2==1){
+            respuestaDos.setAlpha(0);
+        }
+        if(pEliminar1==2 || pEliminar2==2){
+            respuestaTres.setAlpha(0);
+        }
+        if(pEliminar1==3 || pEliminar2==3){
+            respuestaCuatro.setAlpha(0);
+        }
+    }
+    public void eliminarDos(PreguntaConImagen pregunta){
+        int posicionRespuestaCorrecta=0;
+        int pEliminar1;
+        int pEliminar2;
+        for(int i = 0; i < 4; i++) {
+            if(pregunta.getOpciones()[i].equals(pregunta.getRespuestaCorrecta())){
+                posicionRespuestaCorrecta=i;
+            }
+        }
+        do{
+            pEliminar1 = genradorDeRandom.nextInt(3);
+            pEliminar2 = genradorDeRandom.nextInt(3);
+        }while(pEliminar1==pEliminar2 || pEliminar1==posicionRespuestaCorrecta || pEliminar2==posicionRespuestaCorrecta);
+
+        if(pEliminar1==0 || pEliminar2==0){
+            respuestaUno.setAlpha(0);
+        }
+        if(pEliminar1==1 || pEliminar2==1){
+            respuestaDos.setAlpha(0);
+        }
+        if(pEliminar1==2 || pEliminar2==2){
+            respuestaTres.setAlpha(0);
+        }
+        if(pEliminar1==3 || pEliminar2==3){
+            respuestaCuatro.setAlpha(0);
         }
     }
 
