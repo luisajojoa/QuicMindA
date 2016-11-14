@@ -369,6 +369,10 @@ public class PreguntaJuego extends Activity implements View.OnClickListener {
 
                 }
                 break;
+            case R.id.rendirse:
+                Intent fin = new Intent(PreguntaJuego.this,FinDelJuego.class);
+                startActivity(fin);
+                break;
         }
     }
     public void eliminarDos(PreguntaSinImagen pregunta){

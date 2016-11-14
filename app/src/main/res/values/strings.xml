@@ -94,4 +94,6 @@
     <string name="respuestaCorrecta71">Bogotá</string>
     <string-array name="respuestasPregunta71">Bogota,Moscu,Napoli,At</string-array>
 
+    <string name="puntaje">Score:</string>
+
 </resources>
