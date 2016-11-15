@@ -203,7 +203,7 @@ public class PreguntaJuego extends Activity implements View.OnClickListener {
         //crecion de pregunta
         crearPregunta(tema);
 
-        //habilitacion de eventos
+        //region HABILITACION DE EVENTOS
         cambioDepregunta= (ImageView) findViewById(R.id.cambioDePregunta);
         cambioDepregunta.setOnClickListener(this);
         cincuenta= (ImageView) findViewById(R.id.menosDos);
@@ -214,6 +214,7 @@ public class PreguntaJuego extends Activity implements View.OnClickListener {
         respuestaDos.setOnClickListener(this);
         respuestaTres.setOnClickListener(this);
         respuestaCuatro.setOnClickListener(this);
+        //endregion
     }
 
     @Override
@@ -222,6 +223,7 @@ public class PreguntaJuego extends Activity implements View.OnClickListener {
         respuestaDos= (Button) findViewById(R.id.respuestaDos);
         respuestaTres= (Button) findViewById(R.id.respuestaTres);
         respuestaCuatro= (Button) findViewById(R.id.respuestaCuatro);
+
         switch (view.getId()){
             case R.id.respuestaUno:
                 if (respuestaUno.getText().equals(preguntasDeGeografia.get(iteradorDePregunta).getRespuestaCorrecta()) && aux ==1){

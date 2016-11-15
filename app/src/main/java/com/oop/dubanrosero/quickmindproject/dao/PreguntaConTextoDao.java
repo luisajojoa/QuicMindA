@@ -50,6 +50,123 @@ public class PreguntaConTextoDao {
             );
             data.add(preguntaConTexto1);
 
+            //region PREGUNTA 311
+            String[] opciones311={
+                "Round","Ring","Triangulo","Sitio para pelear"
+            };
+            PreguntaSinImagen preguntaConTexto311= new PreguntaSinImagen(
+                    "¿Cómo se llama el lugar rodeado de tres cuerdas donde pelean los boxeadores?",
+                    Constant.TYPE_DEPORTE,
+                    opciones311,
+                    "Ring"
+            );
+            data.add(preguntaConTexto311);
+            //endregion
+
+            //region PREGUNTA 312
+            String[] opciones312={
+                    "Club Municipal Deportivo","Millonarios","Sanatfe","Nacional"
+            };
+            PreguntaSinImagen preguntaConTexto312= new PreguntaSinImagen(
+                    "¿Cuál fue el primer campeón Colombian de un torneo internacional de Futbol?",
+                    Constant.TYPE_DEPORTE,
+                    opciones312,
+                    "Club Municipal Deportivo"
+            );
+            data.add(preguntaConTexto312);
+            //endregion
+
+            //region PREGUNTA 313
+            String[] opciones313={
+                    "Argentina","Urugay","España","Chile"
+            };
+            PreguntaSinImagen preguntaConTexto313= new PreguntaSinImagen(
+                    "¿De dónde es el tenista Juan Martín del Potro?",
+                    Constant.TYPE_DEPORTE,
+                    opciones313,
+                    "Argentina"
+            );
+            data.add(preguntaConTexto313);
+            //endregion
+
+            //region PREGUNTA 314
+            String[] opciones314={
+                    "Monumental José Fierro","Monumental José Ferro","José Fierro","Ninguna de las anteriores"
+            };
+            PreguntaSinImagen preguntaConTexto314= new PreguntaSinImagen(
+                    "¿Cuál se dice que es la cancha más fría del fútbol argentino?",
+                    Constant.TYPE_DEPORTE,
+                    opciones314,
+                    "Monumental José Fierro"
+            );
+            data.add(preguntaConTexto314);
+            //endregion
+
+            //region PREGUNTA 315
+            String[] opciones315={
+                    "1946","1945","1960","1961"
+            };
+            PreguntaSinImagen preguntaConTexto315= new PreguntaSinImagen(
+                    "¿Cuándo se fundó el club deportivo Millonarios?",
+                    Constant.TYPE_DEPORTE,
+                    opciones315,
+                    "1946"
+            );
+            data.add(preguntaConTexto315);
+            //endregion
+
+            //region PREGUNTA 316
+            String[] opciones316={
+                    "Independiente Medellin","Nacional","Junior","Ninguna de las anteriores"
+            };
+            PreguntaSinImagen preguntaConTexto316= new PreguntaSinImagen(
+                    "¿En qué equipo comenzó Juan Guillermo Cuadrado su carrera futbolística?",
+                    Constant.TYPE_DEPORTE,
+                    opciones316,
+                    "Independiente Medellin"
+            );
+            data.add(preguntaConTexto316);
+            //endregion
+
+            //region PREGUNTA 317
+            String[] opciones317={
+                    "Buenaventura","Tumaco","Barranquilla","Nuqui"
+            };
+            PreguntaSinImagen preguntaConTexto317= new PreguntaSinImagen(
+                    "¿Dónde nació Pablo Armero?",
+                    Constant.TYPE_DEPORTE,
+                    opciones317,
+                    "Tumaco"
+            );
+            data.add(preguntaConTexto317);
+            //endregion
+
+            //region PREGUNTA 318
+            String[] opciones318={
+                    "Ninguna de las anteriores","Rondaldo Arantes","Edson Martinez","Edson Arantes do Nascimento"
+            };
+            PreguntaSinImagen preguntaConTexto318= new PreguntaSinImagen(
+                    "¿Cuál es el nombre real de Pelé?",
+                    Constant.TYPE_DEPORTE,
+                    opciones318,
+                    "Edson Arantes do Nascimento"
+            );
+            data.add(preguntaConTexto318);
+            //endregion
+
+            //region PREGUNTA 319
+            String[] opciones319={
+                    "Costa Rica, España, Alemania y Estados Unidos","Holanda, Argentina, Brasil y Alemania", "Alemania, Brasil, Argentina y España","Ninguna de las anteriores"
+            };
+            PreguntaSinImagen preguntaConTexto319= new PreguntaSinImagen(
+                    "¿Quién pasó a seminifales en el mundial Brasil 2014?",
+                    Constant.TYPE_DEPORTE,
+                    opciones319,
+                    "Holanda, Argentina, Brasil y Alemania"
+            );
+            data.add(preguntaConTexto319);
+            //endregion
+
         }
         return data;
     }
@@ -88,6 +205,147 @@ public class PreguntaConTextoDao {
             );
             data.add(preguntaConTexto1);
 
+            //region PREGUNTA 320
+            String[] opciones320= {
+                    "Mula","Yegua","Potranca","Burro"
+            };
+
+            PreguntaSinImagen preguntaConTexto320= new PreguntaSinImagen(
+                    "¿Cómo se le llama al descentiente entre un asno y una yegua?",
+                    Constant.TYPE_CIENCIAS,
+                    opciones320,
+                    "Mula"
+            );
+            data.add(preguntaConTexto320);
+            //endregion
+
+            //region PREGUNTA 321
+            String[] opciones321= {
+                    "Polo norte cartesiano","Antártida","Antártica","Polaris"
+            };
+
+            PreguntaSinImagen preguntaConTexto321= new PreguntaSinImagen(
+                    "¿Con qué coincide el polo norte celeste?",
+                    Constant.TYPE_CIENCIAS,
+                    opciones321,
+                    "Polaris"
+            );
+            data.add(preguntaConTexto321);
+            //endregion
+
+            //region PREGUNTA 322
+            String[] opciones322= {
+                    "Hortaliza","Vegetal","Verdura","Fruta"
+            };
+
+            PreguntaSinImagen preguntaConTexto322= new PreguntaSinImagen(
+                    "¿Para los botánicos, qué es un tomate?",
+                    Constant.TYPE_CIENCIAS,
+                    opciones322,
+                    "Fruta"
+            );
+            data.add(preguntaConTexto322);
+            //endregion
+
+            //region PREGUNTA 323
+            String[] opciones323= {
+                    "Atraccion magnética","Corriente eléctrica","Emisión de Luz","Todas las anteriores"
+            };
+
+            PreguntaSinImagen preguntaConTexto323= new PreguntaSinImagen(
+                    "¿Qué produce la variación de un campo magnético?",
+                    Constant.TYPE_CIENCIAS,
+                    opciones323,
+                    "Corriente eléctrica"
+            );
+            data.add(preguntaConTexto323);
+            //endregion
+
+            //region PREGUNTA 324
+            String[] opciones324= {
+                    "Penicilina","Bomba atómica","Dinamita","La idea de crear los premios"
+            };
+
+            PreguntaSinImagen preguntaConTexto324= new PreguntaSinImagen(
+                    "¿Qué inventó Alfred Nobel, el que da nombrea losfamosos premios?",
+                    Constant.TYPE_CIENCIAS,
+                    opciones324,
+                    "Dinamita"
+            );
+            data.add(preguntaConTexto324);
+            //endregion
+
+            //region PREGUNTA 325
+            String[] opciones325= {
+                    "Ardilla voladora","Murciélago","Ninguna de las anteriores","Gato volador"
+            };
+
+            PreguntaSinImagen preguntaConTexto325= new PreguntaSinImagen(
+                    "¿Cuál es el único mamífero capaz de volar?",
+                    Constant.TYPE_CIENCIAS,
+                    opciones325,
+                    "Murciélago"
+            );
+            data.add(preguntaConTexto325);
+            //endregion
+
+            //region PREGUNTA 326
+            String[] opciones326= {
+                    "205","310","280","206"
+            };
+
+            PreguntaSinImagen preguntaConTexto326= new PreguntaSinImagen(
+                    "¿Cuántos huesos tiene en total un ser humano adulto?",
+                    Constant.TYPE_CIENCIAS,
+                    opciones326,
+                    "206"
+            );
+            data.add(preguntaConTexto326);
+            //endregion
+
+            //region PREGUNTA 327
+            String[] opciones327= {
+                    "100","1500","1000","800"
+            };
+
+            PreguntaSinImagen preguntaConTexto327= new PreguntaSinImagen(
+                    "¿Cuántos terremotos en promedio tiene Japón al año?",
+                    Constant.TYPE_CIENCIAS,
+                    opciones327,
+                    "1500"
+            );
+            data.add(preguntaConTexto327);
+            //endregion
+
+            //region PREGUNTA 328
+            String[] opciones328= {
+                    "36m","20m","10m","15m"
+            };
+
+            PreguntaSinImagen preguntaConTexto328= new PreguntaSinImagen(
+                    "¿Cuánto cabello produce en promedio una persona al año?",
+                    Constant.TYPE_CIENCIAS,
+                    opciones328,
+                    "36m"
+            );
+            data.add(preguntaConTexto328);
+            //endregion
+
+            //region PREGUNTA 329
+            String[] opciones329= {
+                    "1943","1953","1869","1890"
+            };
+
+            PreguntaSinImagen preguntaConTexto329= new PreguntaSinImagen(
+                    "¿Cuándofue establecida por primera vez la estructura molecular de ADN?",
+                    Constant.TYPE_CIENCIAS,
+                    opciones329,
+                    "1953"
+            );
+            data.add(preguntaConTexto329);
+            //endregion
+
+
         }
         return data;
     }
@@ -124,8 +382,152 @@ public class PreguntaConTextoDao {
                     opciones1,
                     "Treinta y dos"
             );
+            data.add(preguntaConTexto1);
 
+            //region PREGUNTA 300
+            String[] opciones300={
+              "En los dos","Norte","Sur","Ecuador"
+            };
+            PreguntaSinImagen preguntaConTexto300= new PreguntaSinImagen(
+                    "¿En qué hemisferio está situado Colombia?",
+                    Constant.TYPE_SOCIALES,
+                    opciones300,
+                    "En los dos"
+            );
+            data.add(preguntaConTexto300);
+            //endregion
+
+            //region PREGUNTA 301
+            String[] opciones301={
+                    "Alemania","Japon","Estados Unidos","Inglaterra"
+            };
+            PreguntaSinImagen preguntaConTexto301= new PreguntaSinImagen(
+                    "¿Cuál fue la primera nación de las potencias del eje durante la segunda guerra mundial?",
+                    Constant.TYPE_SOCIALES,
+                    opciones301,
+                    "Alemania"
+            );
+            data.add(preguntaConTexto301);
+            //endregion
+
+            //region PREGUNTA 302
+            String[] opciones302={
+                    "6","5","7","8"
+            };
+            PreguntaSinImagen preguntaConTexto302= new PreguntaSinImagen(
+                    "¿Cuántas regiones componen la geografía colombiana?",
+                    Constant.TYPE_SOCIALES,
+                    opciones302,
+                    "6"
+            );
+            data.add(preguntaConTexto302);
+            //endregion
+
+            //region PREGUNTA 303
+            String[] opciones303={
+                    "Rabat","Fez","Marrakech","Dali"
+            };
+            PreguntaSinImagen preguntaConTexto303= new PreguntaSinImagen(
+                    "¿Cuál es la capital de Marruecos?",
+                    Constant.TYPE_SOCIALES,
+                    opciones303,
+                    "Rabat"
+            );
+            data.add(preguntaConTexto303);
+            //endregion
+
+            //region PREGUNTA 304
+            String[] opciones304={
+                    "Pablo Escobar","Joaquin Guzman","Raul Reyes","Ninguna de las anteriores"
+            };
+            PreguntaSinImagen preguntaConTexto304= new PreguntaSinImagen(
+                    "¿Quién mató a Rodrigo Lara?",
+                    Constant.TYPE_SOCIALES,
+                    opciones304,
+                    "Pablo Escobar"
+            );
+            data.add(preguntaConTexto304);
+            //endregion
+
+            //region PREGUNTA 305
+            String[] opciones305={
+                    "Asia","America","Europa","Africa"
+            };
+            PreguntaSinImagen preguntaConTexto305= new PreguntaSinImagen(
+                    "¿Dónde está ubicado Tibet?",
+                    Constant.TYPE_SOCIALES,
+                    opciones305,
+                    "Asia"
+            );
+            data.add(preguntaConTexto305);
+            //endregion
+
+            //region PREGUNTA 306
+            String[] opciones306={
+                    "China","Japón","Estados Unidos","Roma"
+            };
+            PreguntaSinImagen preguntaConTexto306= new PreguntaSinImagen(
+                    "¿Cuál fue el único Imperio Colonial NO Eruopeo?",
+                    Constant.TYPE_SOCIALES,
+                    opciones306,
+                    "Japón"
+            );
+            data.add(preguntaConTexto306);
+            //endregion
+
+            //region PREGUNTA 307
+            String[] opciones307={
+                    "1537","1485","1492","1475"
+            };
+            PreguntaSinImagen preguntaConTexto307= new PreguntaSinImagen(
+                    "¿Cuándo fue el descubrimiento de América?",
+                    Constant.TYPE_SOCIALES,
+                    opciones307,
+                    "1492"
+            );
+            data.add(preguntaConTexto307);
+            //endregion
+
+            //region PREGUNTA 308
+            String[] opciones308={
+                    "Berna","Zurich","Ginebra","Ninguna de las anteriores"
+            };
+            PreguntaSinImagen preguntaConTexto308= new PreguntaSinImagen(
+                    "¿Cuál es la capital de Suiza?",
+                    Constant.TYPE_SOCIALES,
+                    opciones308,
+                    "Berna"
+            );
+            data.add(preguntaConTexto308);
+            //endregion
+
+            //region PREGUNTA 309
+            String[] opciones309={
+                    "Guainia","Meta","Vaupés","Cundinamarca"
+            };
+            PreguntaSinImagen preguntaConTexto309= new PreguntaSinImagen(
+                    "¿Dónde queda el municipio de Mapiripana?",
+                    Constant.TYPE_SOCIALES,
+                    opciones309,
+                    "Guainia"
+            );
+            data.add(preguntaConTexto309);
+            //endregion
+
+            //region PREGUNTA 310
+            String[] opciones310={
+                    "6 de Agosto de 1945","5 de Agosto de 1945", "6 de Agosto de 1946","10 de Agosto de 1945"
+            };
+            PreguntaSinImagen preguntaConTexto310= new PreguntaSinImagen(
+                    "¿Cuándo fue lanzada la bomba atómica de Hiroshima?",
+                    Constant.TYPE_SOCIALES,
+                    opciones310,
+                    "6 de Agosto de 1945"
+            );
+            data.add(preguntaConTexto310);
+            //endregion
         }
+
         return data;
     }
     public List<PreguntaSinImagen> getPreguntasConTextArte(){
@@ -162,6 +564,147 @@ public class PreguntaConTextoDao {
                     "Robin Williams"
             );
             data.add(preguntaConTexto1);
+
+            //region PREGUNTA 330
+            String[] opciones330={
+                    "Chopin","Beethoven","Mozart","Franz Liszt"
+            };
+
+            PreguntaSinImagen preguntaConTexto330= new PreguntaSinImagen(
+                    "¿Cuál de los compositores murió más joven?",
+                    Constant.TYPE_ARTES,
+                    opciones330,
+                    "Mozart"
+            );
+            data.add(preguntaConTexto330);
+            //endregion
+
+            //region PREGUNTA 331
+            String[] opciones331={
+                    "Edvard Munch","Picasso","Lonardo da Vinci","Salvador Dalí"
+            };
+
+            PreguntaSinImagen preguntaConTexto331= new PreguntaSinImagen(
+                    "¿Quién pintó la última cena?",
+                    Constant.TYPE_ARTES,
+                    opciones331,
+                    "Leonardo da Vinci"
+            );
+            data.add(preguntaConTexto331);
+            //endregion
+
+            //region PREGUNTA 332
+            String[] opciones332={
+                    "Christopher Nolan","Jenifer Todd","Suzanne Todd","Wally Pfister"
+            };
+
+            PreguntaSinImagen preguntaConTexto332= new PreguntaSinImagen(
+                    "¿Quién es el director de la película Memento?",
+                    Constant.TYPE_ARTES,
+                    opciones332,
+                    "Christopher Nolan"
+            );
+            data.add(preguntaConTexto332);
+            //endregion
+
+            //region PREGUNTA 333
+            String[] opciones333={
+                    "11","5","8","3"
+            };
+
+            PreguntaSinImagen preguntaConTexto333= new PreguntaSinImagen(
+                    "¿Cuántos premios Oscar ha ganado la película Titanic?",
+                    Constant.TYPE_ARTES,
+                    opciones333,
+                    "11"
+            );
+            data.add(preguntaConTexto333);
+            //endregion
+
+            //region PREGUNTA 334
+            String[] opciones334={
+                    "8000m","7.5 km","5000m","6km"
+            };
+
+            PreguntaSinImagen preguntaConTexto334= new PreguntaSinImagen(
+                    "¿Cuánto minde la pintura más grande del mundo pintada por una sola persona?",
+                    Constant.TYPE_ARTES,
+                    opciones334,
+                    "8000m"
+            );
+            data.add(preguntaConTexto334);
+            //endregion
+
+            //region PREGUNTA 335
+            String[] opciones335={
+                    "Palacio de Invierno","Museo de Louvre","Gagosian Gallery","Matthew Marks Gallery"
+            };
+
+            PreguntaSinImagen preguntaConTexto335= new PreguntaSinImagen(
+                    "¿Cuál es la galería de arte más grande?",
+                    Constant.TYPE_ARTES,
+                    opciones335,
+                    "Palacio de Invierno"
+            );
+            data.add(preguntaConTexto335);
+            //endregion
+
+            //region PREGUNTA 336
+            String[] opciones336={
+                    "Van Gogh","Dalí","Monet","Rembrandt"
+            };
+
+            PreguntaSinImagen preguntaConTexto336= new PreguntaSinImagen(
+                    "¿Quién pintó el Cristo sin espinas y sin sangre?",
+                    Constant.TYPE_ARTES,
+                    opciones336,
+                    "Dalí"
+            );
+            data.add(preguntaConTexto336);
+            //endregion
+
+            //region PREGUNTA 337
+            String[] opciones337={
+                    "Van Gogh","El Greco","El Bosco","Caravaggio"
+            };
+
+            PreguntaSinImagen preguntaConTexto337= new PreguntaSinImagen(
+                    "¿Quién pintó El jardín de las delicias?",
+                    Constant.TYPE_ARTES,
+                    opciones337,
+                    "El Bosco"
+            );
+            data.add(preguntaConTexto337);
+            //endregion
+
+            //region PREGUNTA 338
+            String[] opciones338={
+                    "Cézanne","Degas","Renoir","Courbet"
+            };
+
+            PreguntaSinImagen preguntaConTexto338= new PreguntaSinImagen(
+                    "¿Quién fue rechazado por la Ecole des Beaux-Arts?",
+                    Constant.TYPE_ARTES,
+                    opciones338,
+                    "Cézanne"
+            );
+            data.add(preguntaConTexto338);
+            //endregion
+
+            //region PREGUNTA 339
+            String[] opciones339={
+                    "5","15","27","20"
+            };
+
+            PreguntaSinImagen preguntaConTexto339= new PreguntaSinImagen(
+                    "¿A qué edad comenzó a pintar Van Gogh?",
+                    Constant.TYPE_ARTES,
+                    opciones339,
+                    "27"
+            );
+            data.add(preguntaConTexto339);
+            //endregion
+
         }
         return data;
     }
