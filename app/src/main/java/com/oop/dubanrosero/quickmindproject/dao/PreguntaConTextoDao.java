@@ -37,6 +37,123 @@ public class PreguntaConTextoDao {
 
             data.add(textQuestion1);
 
+            //region PREGUNTA 311
+            String[] options311={
+                    "Round","Ring","Triangle","Fighting place"
+            };
+            PreguntaSinImagen textQuestion311= new PreguntaSinImagen(
+                    "What's the name of the place rounded by 3 sales in where boxing is played?",
+                    Constant.TYPE_DEPORTE,
+                    options311,
+                    "Ring"
+            );
+            data.add(textQuestion311);
+            //endregion
+
+            //region PREGUNTA 312
+            String[] options312={
+                    "Club Municipal Deportivo","Millonarios","Santa fe","Nacional"
+            };
+            PreguntaSinImagen textQuestion312= new PreguntaSinImagen(
+                    "Which colombian soccer team was the first winner of a international contest?",
+                    Constant.TYPE_DEPORTE,
+                    options312,
+                    "Club Municipal Deportivo"
+            );
+            data.add(textQuestion312);
+            //endregion
+
+            //region PREGUNTA 313
+            String[] opciones313={
+                    "Argentina","Urugay","Spain","Chile"
+            };
+            PreguntaSinImagen preguntaConTexto313= new PreguntaSinImagen(
+                    "Where is Juan Martín del Potro from?",
+                    Constant.TYPE_DEPORTE,
+                    opciones313,
+                    "Argentina"
+            );
+            data.add(preguntaConTexto313);
+            //endregion
+
+            //region PREGUNTA 314
+            String[] opciones314={
+                    "Monumental José Fierro","Monumental José Ferro","José Fierro","Ninguna de las anteriores"
+            };
+            PreguntaSinImagen preguntaConTexto314= new PreguntaSinImagen(
+                    "¿Cuál se dice que es la cancha más fría del fútbol argentino?",
+                    Constant.TYPE_DEPORTE,
+                    opciones314,
+                    "Monumental José Fierro"
+            );
+            data.add(preguntaConTexto314);
+            //endregion
+
+            //region PREGUNTA 315
+            String[] opciones315={
+                    "1946","1945","1960","1961"
+            };
+            PreguntaSinImagen preguntaConTexto315= new PreguntaSinImagen(
+                    "When was C.D. Millonarios born?",
+                    Constant.TYPE_DEPORTE,
+                    opciones315,
+                    "1946"
+            );
+            data.add(preguntaConTexto315);
+            //endregion
+
+            //region PREGUNTA 316
+            String[] opciones316={
+                    "Independiente Medellin","Nacional","Junior","None of above"
+            };
+            PreguntaSinImagen preguntaConTexto316= new PreguntaSinImagen(
+                    "¿En qué equipo comenzó Juan Guillermo Cuadrado su carrera futbolística?",
+                    Constant.TYPE_DEPORTE,
+                    opciones316,
+                    "Independiente Medellin"
+            );
+            data.add(preguntaConTexto316);
+            //endregion
+
+            //region PREGUNTA 317
+            String[] opciones317={
+                    "Buenaventura","Tumaco","Barranquilla","Nuqui"
+            };
+            PreguntaSinImagen preguntaConTexto317= new PreguntaSinImagen(
+                    "Where was Pablo Armero born?",
+                    Constant.TYPE_DEPORTE,
+                    opciones317,
+                    "Tumaco"
+            );
+            data.add(preguntaConTexto317);
+            //endregion
+
+            //region PREGUNTA 318
+            String[] opciones318={
+                    "None of above","Rondaldo Arantes","Edson Martinez","Edson Arantes do Nascimento"
+            };
+            PreguntaSinImagen preguntaConTexto318= new PreguntaSinImagen(
+                    "Which is the real name of Pelé?",
+                    Constant.TYPE_DEPORTE,
+                    opciones318,
+                    "Edson Arantes do Nascimento"
+            );
+            data.add(preguntaConTexto318);
+            //endregion
+
+            //region PREGUNTA 319
+            String[] opciones319={
+                    "Costa Rica, Spain, Germany y USA","Holland, Argentina, Brazil y Germany", "Germany, Brazil, Argentina y Spain","None of above"
+            };
+            PreguntaSinImagen preguntaConTexto319= new PreguntaSinImagen(
+                    "¿Quién pasó a seminifales en el mundial Brasil 2014?",
+                    Constant.TYPE_DEPORTE,
+                    opciones319,
+                    "Holland, Argentina, Brazil y Germany"
+            );
+            data.add(preguntaConTexto319);
+            //endregion
+
 
         }
 
@@ -176,18 +293,159 @@ public class PreguntaConTextoDao {
         List<PreguntaSinImagen> data = new ArrayList<>();
 
         if (isEnglish){
-            String[] ooptions1 = {
+            String[] options1 = {
                     "Mitosis","Meiosis","Cytokinesis","karyiokinesis"
             };
 
             PreguntaSinImagen textQuestion1 = new PreguntaSinImagen(
                     "Process by wich the cell divides itself into two daughter cells?",
                     Constant.TYPE_CIENCIAS,
-                    ooptions1,
+                    options1,
                     "Mitosis"
             );
 
             data.add(textQuestion1);
+
+            //region PREGUNTA 320
+            String[] options320= {
+                    "Mule","Mare","Donkey","Filly"
+            };
+
+            PreguntaSinImagen textQuestion320= new PreguntaSinImagen(
+                    "What's the name of the son between a donkey and a mare",
+                    Constant.TYPE_CIENCIAS,
+                    options320,
+                    "Mule"
+            );
+            data.add(textQuestion320);
+            //endregion
+
+            //region PREGUNTA 321
+            String[] options321= {
+                    "Cartesian north pole","Polaris","Antarctic","Antarctica"
+            };
+
+            PreguntaSinImagen textQuestion321= new PreguntaSinImagen(
+                    "What is at the same point with the celestial north pole?",
+                    Constant.TYPE_CIENCIAS,
+                    options321,
+                    "Polaris"
+            );
+            data.add(textQuestion321);
+            //endregion
+
+            //region PREGUNTA 322
+            String[] options322= {
+                    "Legume","Vegetable","Greens","Fruit"
+            };
+
+            PreguntaSinImagen textQuestion322= new PreguntaSinImagen(
+                    "For the botanists, What is a tomato?",
+                    Constant.TYPE_CIENCIAS,
+                    options322,
+                    "Fruit"
+            );
+            data.add(textQuestion322);
+            //endregion
+
+            //region PREGUNTA 323
+            String[] options323= {
+                    "Magnetic atraction","Electric Current","Light emission","All above"
+            };
+
+            PreguntaSinImagen textQuestion323= new PreguntaSinImagen(
+                    "What is produced by a magnetic field variation?",
+                    Constant.TYPE_CIENCIAS,
+                    options323,
+                    "Electric Current"
+            );
+            data.add(textQuestion323);
+            //endregion
+
+            //region PREGUNTA 324
+            String[] options324= {
+                    "Penicilin","Atomic Bomb","Dinamit","The idea about the contest"
+            };
+
+            PreguntaSinImagen textQuestion324= new PreguntaSinImagen(
+                    "What did Alfred Nobel create, which gives the name to the famous awkward?",
+                    Constant.TYPE_CIENCIAS,
+                    options324,
+                    "Dinamit"
+            );
+            data.add(textQuestion324);
+            //endregion
+
+            //region PREGUNTA 325
+            String[] options325= {
+                    "Flying squirrel","Bat","None of the above","Flying cat"
+            };
+
+            PreguntaSinImagen textQuestion325= new PreguntaSinImagen(
+                    "Which is the only mammal capable of flying?",
+                    Constant.TYPE_CIENCIAS,
+                    options325,
+                    "Bat"
+            );
+            data.add(textQuestion325);
+            //endregion
+
+            //region PREGUNTA 326
+            String[] options326= {
+                    "205","310","280","206"
+            };
+
+            PreguntaSinImagen textQuestion326= new PreguntaSinImagen(
+                    "How many bones does an adult human have?",
+                    Constant.TYPE_CIENCIAS,
+                    options326,
+                    "206"
+            );
+            data.add(textQuestion326);
+            //endregion
+
+            //region PREGUNTA 327
+            String[] opciones327= {
+                    "100","1500","1000","800"
+            };
+
+            PreguntaSinImagen preguntaConTexto327= new PreguntaSinImagen(
+                    "How many earthquakes does Japan have average in a year?",
+                    Constant.TYPE_CIENCIAS,
+                    opciones327,
+                    "1500"
+            );
+            data.add(preguntaConTexto327);
+            //endregion
+
+            //region PREGUNTA 328
+            String[] opciones328= {
+                    "36m","20m","10m","15m"
+            };
+
+            PreguntaSinImagen preguntaConTexto328= new PreguntaSinImagen(
+                    "How many hair does a person produces in a year?",
+                    Constant.TYPE_CIENCIAS,
+                    opciones328,
+                    "36m"
+            );
+            data.add(preguntaConTexto328);
+            //endregion
+
+            //region PREGUNTA 329
+            String[] opciones329= {
+                    "1943","1953","1869","1890"
+            };
+
+            PreguntaSinImagen preguntaConTexto329= new PreguntaSinImagen(
+                    "When the molecular structure of DNA was first established?",
+                    Constant.TYPE_CIENCIAS,
+                    opciones329,
+                    "1953"
+            );
+            data.add(preguntaConTexto329);
+            //endregion
+
 
 
         }
@@ -337,7 +595,7 @@ public class PreguntaConTextoDao {
             };
 
             PreguntaSinImagen preguntaConTexto329= new PreguntaSinImagen(
-                    "¿Cuándofue establecida por primera vez la estructura molecular de ADN?",
+                    "¿Cuándo fue establecida por primera vez la estructura molecular de ADN?",
                     Constant.TYPE_CIENCIAS,
                     opciones329,
                     "1953"
